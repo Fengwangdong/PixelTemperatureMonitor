@@ -76,10 +76,10 @@ if(os.path.exists(inputFileName)):
             label = ROOT.TLatex(0.21,0.9, klayer.replace("L","LYR"))
             label.SetNDC()
 
-            legend = ROOT.TLegend(0.7,0.87,0.99,0.99)
+            legend = ROOT.TLegend(0.55,0.87,0.99,0.99)
             legend.SetFillColor(0)
             legend.SetTextSize(0.04)
-            legend.AddEntry(gr_temp,"BPix","lpe")
+            legend.AddEntry(gr_temp,"BPix Cooling loop","lpe")
 
             gr_temp.Draw("ep same")
             legend.Draw("same")
