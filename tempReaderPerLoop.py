@@ -42,7 +42,7 @@ loopnames = [
 "L4D4PF"]
 
 fileName = "temperatureFromDB_Corr.txt"
-outputFile = "temperatures.txt"
+outputFile = "temperatures_perloop.txt"
 
 if(os.path.exists(fileName)):
     fin = open(fileName, "r+")

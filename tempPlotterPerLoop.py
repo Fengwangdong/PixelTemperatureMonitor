@@ -7,7 +7,7 @@ from array import array
 tdrStyle.setTDRStyle()
 ROOT.gStyle.SetErrorX(0.5)
 
-inputFileName = "temperatures.txt"
+inputFileName = "temperatures_perloop.txt"
 layer = ["L1","L2","L3","L4"]
 
 data = {}
@@ -84,4 +84,4 @@ if(os.path.exists(inputFileName)):
             gr_temp.Draw("ep same")
             legend.Draw("same")
             label.Draw("same")
-            canvas.SaveAs("BPix_" + klayer + "_temperature.pdf")
+            canvas.SaveAs("BPix_" + klayer + "_temperature_perloop.pdf")
