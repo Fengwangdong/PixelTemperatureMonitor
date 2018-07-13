@@ -41,7 +41,7 @@ loopnames = [
 "L4D3MF",
 "L4D4PF"]
 
-fileName = "temperatureFromDB.txt"
+fileName = "temperatureFromDB_Corr.txt"
 outputFile = "temperatures.txt"
 
 if(os.path.exists(fileName)):
