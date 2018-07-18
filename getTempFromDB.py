@@ -5,8 +5,11 @@ import cx_Oracle
 connection = cx_Oracle.connect('cms_trk_r/1A3C5E7G:FIN@cms_omds_adg')
 cursor = connection.cursor()
 
-start_time = "2018-07-09 21:15:00"
-stop_time = "2018-07-10 06:00:00"
+#start_time = "2018-07-09 21:15:00"
+#stop_time = "2018-07-10 06:00:00"
+
+start_time = "2018-07-18 00:43:39"
+stop_time = "2018-07-18 10:59:00"
 
 option = "PixelBarrel"
 

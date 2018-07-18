@@ -53,22 +53,18 @@ if(os.path.exists(inputFileName)):
     lines = fin.readlines()
 
     for i,ilayer in enumerate(layer):
-        frameHist = ROOT.TH2F("leakageCurrent","leakageCurrent",8,0,8,len(loopnames[i]),0,len(loopnames[i]))
+        frameHist = ROOT.TH2F("leakageCurrent","leakageCurrent",8,0,8,2*len(loopnames[i]),0,2*len(loopnames[i]))
         for ibinX in xrange(8):
             frameHist.GetXaxis().SetBinLabel(ibinX+1,str(ibinX+1))
 
         for iloop in xrange(len(loopnames[i])):
-            if "PN" in loopnames[i][iloop]:
-                frameHist.GetYaxis().SetBinLabel(iloop+1, loopnames[i][iloop] + "(BpI)")
+            if "N" in loopnames[i][iloop]:
+                frameHist.GetYaxis().SetBinLabel(iloop*2+1, loopnames[i][iloop] + " (BpI)")
+                frameHist.GetYaxis().SetBinLabel(iloop*2+2, loopnames[i][iloop] + " (BmI)")
 
-            if "MN" in loopnames[i][iloop]:
-                frameHist.GetYaxis().SetBinLabel(iloop+1, loopnames[i][iloop] + "(BmI)")
-
-            if "PF" in loopnames[i][iloop]:
-                frameHist.GetYaxis().SetBinLabel(iloop+1, loopnames[i][iloop] + "(BpO)")
-
-            if "MF" in loopnames[i][iloop]:
-                frameHist.GetYaxis().SetBinLabel(iloop+1, loopnames[i][iloop] + "(BmO)")
+            if "F" in loopnames[i][iloop]:
+                frameHist.GetYaxis().SetBinLabel(iloop*2+1, loopnames[i][iloop] + " (BpO)")
+                frameHist.GetYaxis().SetBinLabel(iloop*2+2, loopnames[i][iloop] + " (BmO)")
 
             for iSec in xrange(len(sector)):
 
@@ -76,11 +72,14 @@ if(os.path.exists(inputFileName)):
                     line = l.split()
 
                     if (sector[iSec] in line[0]) and (loopnames[i][iloop] in line[1]) and (line[2]!="null"):
-                        frameHist.SetBinContent(iSec+1,iloop+1,float(line[2]))
+                        if "_Bp" in line[0]:
+                            frameHist.SetBinContent(iSec+1,iloop*2+1,float(line[2]))
+
+                        if "_Bm" in line[0]:
+                            frameHist.SetBinContent(iSec+1,iloop*2+2,float(line[2]))
 
                     else:
                         continue
-
 
         canvas = ROOT.TCanvas("leakageCurrent","leakageCurrent",1300,1000)
         canvas.SetTopMargin(0.07)
