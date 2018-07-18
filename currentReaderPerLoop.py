@@ -20,6 +20,8 @@ if(os.path.exists(fileName)):
             line = l.split()
             if iSec in line[0]:
                 currentHist.Fill(float(line[1]))
+                if float(line[1]) <= 100.0:
+                    print "anomalous HV current (maybe off): ", line[0], "  ", line[1], "  ", line[2], "  ", line[3]
 
         if currentHist.GetEntries() == 0:
             fout.write(iSec + "   " + HVTempMap[iSec] + "   " + "null" + "   " + "null" + "\n")

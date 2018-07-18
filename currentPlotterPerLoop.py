@@ -82,15 +82,15 @@ if(os.path.exists(inputFileName)):
                         continue
 
 
-        canvas = ROOT.TCanvas("leakageCurrent","leakageCurrent",1000,1000)
+        canvas = ROOT.TCanvas("leakageCurrent","leakageCurrent",1300,1000)
         canvas.SetTopMargin(0.07)
-        canvas.SetLeftMargin(0.15)
+        canvas.SetLeftMargin(0.25)
         canvas.SetRightMargin(0.15)
         canvas.SetBottomMargin(0.16)
         canvas.cd()
 
         frameHist.GetYaxis().SetTitle("cooling loop")
-        frameHist.GetYaxis().SetTitleOffset(1.)
+        frameHist.GetYaxis().SetTitleOffset(2.2)
         frameHist.GetYaxis().SetTitleSize(0.06)
         frameHist.GetYaxis().SetLabelSize(0.05)
 
@@ -99,7 +99,7 @@ if(os.path.exists(inputFileName)):
         frameHist.GetXaxis().SetLabelSize(0.05)
 
         frameHist.GetZaxis().SetLabelSize(0.03)
-        frameHist.SetMarkerSize(1.7)
+        frameHist.SetMarkerSize(1.5)
         frameHist.Draw("colztext")
 
         label = ROOT.TLatex(0.21,0.95, ilayer.replace("L","LYR") + " HV current [uA]")

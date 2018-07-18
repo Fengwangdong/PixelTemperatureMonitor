@@ -6,8 +6,8 @@ import datetime
 connection = cx_Oracle.connect('cms_trk_r/1A3C5E7G:FIN@cms_omds_adg')
 cursor = connection.cursor()
 
-start_time = "2018-06-11 20:45:00"
-stop_time = "2018-06-11 22:30:00"
+start_time = "2018-07-18 04:12:00"
+stop_time = "2018-07-18 10:59:00"
 
 option = "PixelBarrel"
 #query = "select dpe_name, alias, id from cms_trk_dcs_pvss_cond.aliases join cms_trk_dcs_pvss_cond.dp_name2id on (dpname || '.' = dpe_name) where alias like '%%/%s'" % (option + "%%channel%%")
