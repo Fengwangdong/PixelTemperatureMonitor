@@ -45,14 +45,14 @@ for k in xrange(len(dpid_rows)):
         if ("channel000" in dpid) or ("channel001" in dpid):
             continue
 
-        if ("LAY14" in dpid) or ("LAY23" in dpid):
+        if ("LAY1/" in dpid) or ("LAY3/" in dpid):
             continue
 
         else:
-            dpid = dpid.replace("LAY1/channel002","LAY1")
-            dpid = dpid.replace("LAY1/channel003","LAY4")
-            dpid = dpid.replace("LAY3/channel002","LAY3")
-            dpid = dpid.replace("LAY3/channel003","LAY2")
+            dpid = dpid.replace("LAY14/channel002","LAY1")
+            dpid = dpid.replace("LAY14/channel003","LAY4")
+            dpid = dpid.replace("LAY23/channel002","LAY3")
+            dpid = dpid.replace("LAY23/channel003","LAY2")
             recordValue = result[0][0]
             fcur.write(dpid + "   " + str(result[0][0]) + "   " + str(result[0][1]) + "\n")
 
@@ -61,17 +61,17 @@ for k in xrange(len(dpid_rows)):
         if ("channel000" in dpid) or ("channel001" in dpid):
             continue
 
-        if ("LAY14" in dpid) or ("LAY23" in dpid):
+        if ("LAY1/" in dpid) or ("LAY3/" in dpid):
             continue
 
         if (abs(recordValue - result[i][0]) <= 3.0):
             continue
 
         else:
-            dpid = dpid.replace("LAY1/channel002","LAY1")
-            dpid = dpid.replace("LAY1/channel003","LAY4")
-            dpid = dpid.replace("LAY3/channel002","LAY3")
-            dpid = dpid.replace("LAY3/channel003","LAY2")
+            dpid = dpid.replace("LAY14/channel002","LAY1")
+            dpid = dpid.replace("LAY14/channel003","LAY4")
+            dpid = dpid.replace("LAY23/channel002","LAY3")
+            dpid = dpid.replace("LAY23/channel003","LAY2")
             recordValue = result[i][0]
             fcur.write(dpid + "   " + str(result[i][0]) + "   " + str(result[i][1]) + "\n")
 
