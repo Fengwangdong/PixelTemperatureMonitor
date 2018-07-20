@@ -8,8 +8,8 @@ cursor = connection.cursor()
 #start_time = "2018-07-09 21:15:00"
 #stop_time = "2018-07-10 06:00:00"
 
-start_time = "2018-07-18 00:43:39"
-stop_time = "2018-07-18 10:59:00"
+start_time = "2018-07-18 00:00:00"
+stop_time = "2018-07-18 06:00:00"
 
 option = "PixelBarrel"
 
@@ -19,8 +19,24 @@ query = """
     or substr(alias,instr(alias,'/',-1)+1) like '""" + str(option + "%%" + "PN") + """'
     or substr(alias,instr(alias,'/',-1)+1) like '""" + str(option + "%%" + "MF") + """'
     or substr(alias,instr(alias,'/',-1)+1) like '""" + str(option + "%%" + "MN") + """')
-    and rtrim(CMS_TRK_DCS_PVSS_COND.aliases.dpe_name,'.') = CMS_TRK_DCS_PVSS_COND.dp_name2id.dpname)
-    select part, value_converted, change_date from CMS_TRK_DCS_PVSS_COND.tkplcreadsensor, IDs where IDs.id = CMS_TRK_DCS_PVSS_COND.tkplcreadsensor.DPID and CMS_TRK_DCS_PVSS_COND.tkplcreadsensor.change_date >= to_timestamp('""" + str(start_time) + """', 'RRRR-MM-DD HH24:MI:SS.FF') AND CMS_TRK_DCS_PVSS_COND.tkplcreadsensor.change_date < to_timestamp('""" + str(stop_time) + """', 'RRRR-MM-DD HH24:MI:SS.FF') order by part, CMS_TRK_DCS_PVSS_COND.tkplcreadsensor.change_date
+    and rtrim(CMS_TRK_DCS_PVSS_COND.aliases.dpe_name,'.') = CMS_TRK_DCS_PVSS_COND.dp_name2id.dpname
+    ),
+
+    temps as ( select part, max(change_date) as itime from CMS_TRK_DCS_PVSS_COND.tkplcreadsensor, IDs
+    where IDs.id = CMS_TRK_DCS_PVSS_COND.tkplcreadsensor.DPID
+    and change_date >= to_timestamp('""" + str(start_time) + """', 'RRRR-MM-DD HH24:MI:SS.FF')
+    and change_date <= to_timestamp('""" + str(stop_time) + """','RRRR-MM-DD HH24:MI:SS.FF')
+    and value_converted is not NULL
+    group by part
+    )
+
+    select IDs.part, value_converted, change_date from CMS_TRK_DCS_PVSS_COND.tkplcreadsensor, IDs, temps
+    where IDs.id = CMS_TRK_DCS_PVSS_COND.tkplcreadsensor.DPID
+    and change_date >= to_timestamp('""" + str(start_time) + """', 'RRRR-MM-DD HH24:MI:SS.FF')
+    and change_date <= to_timestamp('""" + str(stop_time) + """', 'RRRR-MM-DD HH24:MI:SS.FF')
+    and change_date = temps.itime
+    and IDs.part = temps.part
+    order by part, change_date
 """
 
 print "start executing query ..."
