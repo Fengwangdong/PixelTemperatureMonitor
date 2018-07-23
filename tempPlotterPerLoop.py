@@ -24,7 +24,7 @@ if(os.path.exists(inputFileName)):
 
         for i,ilayer in enumerate(layer):
 
-            if ilayer in line[0]:
+            if (ilayer in line[0]) and (line[2]!="null") and (line[3]!="null"):
                 data[i][0].append(float(line[1]))
                 data[i][1].append(float(line[2]))
                 data[i][2].append(float(line[3]))

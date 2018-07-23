@@ -62,7 +62,7 @@ if(os.path.exists(fileName)):
                 tempHist.Fill(float(line[1]))
 
         if tempHist.GetEntries() == 0:
-            fout.write(index + "   " + str(phi) + "   " + str(0) + "   " + str(0) + "\n")
+            fout.write(index + "   " + str(phi) + "   " + "null" + "   " + "null" + "\n")
 
         else:
             aveTemp = tempHist.GetMean()
