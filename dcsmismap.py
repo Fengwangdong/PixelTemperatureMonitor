@@ -1,3 +1,4 @@
+# alias in database (OMDS) : alias in DCS (correct)
 dcsmismap = {
     "4I_L1D2MN":"4R_L1D2MN",
     "4M_L1D2MN":"4I_L1D2MN",
