@@ -1,5 +1,5 @@
 import ROOT
-from ROOT import TStyle, TH2, TH2F, TCanvas, TROOT, TLatex, TAttFill, TColor
+from ROOT import TStyle, TProfile2D, TCanvas, TROOT, TLatex, TAttFill, TColor
 import tdrStyle
 import os
 from array import array
@@ -53,7 +53,7 @@ if(os.path.exists(inputFileName)):
     lines = fin.readlines()
 
     for i,ilayer in enumerate(layer):
-        frameHist = ROOT.TH2F("temp","temp",len(loopnames[i]),0,len(loopnames[i]),3,0,3)
+        frameHist = ROOT.TProfile2D("temp","temp",len(loopnames[i]),0,len(loopnames[i]),3,0,3)
         frameHist.GetYaxis().SetBinLabel(1,"begin")
         frameHist.GetYaxis().SetBinLabel(2,"middle")
         frameHist.GetYaxis().SetBinLabel(3,"end")
@@ -68,13 +68,13 @@ if(os.path.exists(inputFileName)):
                 if (loopnames[i][iloop] in line[0]) and (line[1]!="null"):
 
                     if "I_" in line[0]:
-                        frameHist.SetBinContent(iloop+1,1,float(line[1]))
+                        frameHist.Fill(iloop,0,float(line[1]))
 
                     elif "M_" in line[0]:
-                        frameHist.SetBinContent(iloop+1,2,float(line[1]))
+                        frameHist.Fill(iloop,1,float(line[1]))
 
                     elif "R_" in line[0]:
-                        frameHist.SetBinContent(iloop+1,3,float(line[1]))
+                        frameHist.Fill(iloop,2,float(line[1]))
 
                 else:
                     continue
