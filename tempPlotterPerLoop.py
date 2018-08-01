@@ -56,7 +56,7 @@ if(os.path.exists(inputFileName)):
             maxValue = max(data[k][1])
 
             frameHist.GetYaxis().SetRangeUser(-15,-4)
-            frameHist.GetYaxis().SetTitle("Temperature [C]")
+            frameHist.GetYaxis().SetTitle("Temperature [degC]")
             frameHist.GetYaxis().SetTitleOffset(1.)
             frameHist.GetYaxis().SetTitleSize(0.06)
             frameHist.GetYaxis().SetLabelSize(0.05)

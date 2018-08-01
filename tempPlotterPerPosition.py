@@ -101,7 +101,7 @@ if(os.path.exists(inputFileName)):
         frameHist.SetMarkerSize(1.7)
         frameHist.Draw("colztext")
 
-        label = ROOT.TLatex(0.21,0.95, ilayer.replace("L","LYR") + "   temperature [C]")
+        label = ROOT.TLatex(0.21,0.95, ilayer.replace("L","LYR") + "  temperature [degC]")
         label.SetNDC()
 
         label.Draw("same")
