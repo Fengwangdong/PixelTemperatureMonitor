@@ -101,7 +101,7 @@ if(os.path.exists(inputFileName)):
         frameHist.SetMarkerSize(1.5)
         frameHist.Draw("colztext")
 
-        label = ROOT.TLatex(0.21,0.95, ilayer.replace("L","LYR") + " HV current [uA]")
+        label = ROOT.TLatex(0.21,0.95, ilayer.replace("L","LYR") + " leakage current per ROC [uA]")
         label.SetNDC()
 
         label.Draw("same")
