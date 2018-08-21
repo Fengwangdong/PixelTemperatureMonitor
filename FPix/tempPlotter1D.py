@@ -26,20 +26,20 @@ if(os.path.exists(inputFileName)):
             for l in lines:
                 line = l.split()
 
-                if ihc in line[0]:
-                    if ("Disk" in line[0]) and ("I" in line[0]) and (str(idisk+1) in line[0]):
+                if (ihc in line[0]) and (str(idisk+1) in line[0]):
+                    if ("Disk" in line[0]) and ("I" in line[0]):
                         histdiskI.SetBinContent(ibin+1,float(line[1]))
                         histdiskI.SetBinError(ibin+1,0)
 
-                    if ("Disk" in line[0]) and ("O" in line[0]) and (str(idisk+1) in line[0]):
+                    if ("Disk" in line[0]) and ("O" in line[0]):
                         histdiskO.SetBinContent(ibin+1,float(line[1]))
                         histdiskO.SetBinError(ibin+1,0)
 
-                    if ("I_SF" in line[0]) and (str(idisk+1) in line[0]):
+                    if ("I_SF" in line[0]):
                         histSFI.SetBinContent(ibin+1,float(line[1]))
                         histSFI.SetBinError(ibin+1,0)
 
-                    if ("O_SF" in line[0]) and (str(idisk+1) in line[0]):
+                    if ("O_SF" in line[0]):
                         histSFO.SetBinContent(ibin+1,float(line[1]))
                         histSFO.SetBinError(ibin+1,0)
 
