@@ -97,11 +97,11 @@ if(os.path.exists(inputFileName)):
         label = ROOT.TLatex(0.21, 0.93, "FPix Disk" + str(idisk+1))
         label.SetNDC()
 
-        legend = ROOT.TLegend(0.72,0.77,0.99,0.99)
+        legend = ROOT.TLegend(0.65,0.77,0.99,0.99)
         legend.SetFillColor(0)
         legend.SetTextSize(0.03)
-        legend.AddEntry(histSFI,"Supply Flow In","lpe")
-        legend.AddEntry(histSFO,"Supply Flow out","lpe")
+        legend.AddEntry(histSFI,"Supply Flow Ring1","lpe")
+        legend.AddEntry(histSFO,"Supply Flow Ring2","lpe")
         legend.AddEntry(histdiskI,"Disk in","lpe")
         legend.AddEntry(histdiskO,"Disk out","lpe")
 
