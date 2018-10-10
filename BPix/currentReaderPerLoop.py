@@ -27,7 +27,7 @@ if(os.path.exists(fileName)):
 
     for iSec in HVTempMap.keys():
 
-        currentHist = ROOT.TH1F("leakageCurrent", "leakageCurrent", 300, 0, 3000)
+        currentHist = ROOT.TH1F("leakageCurrent", "leakageCurrent", 500, 0, 5000)
 
         for l in lines:
             line = l.split()
