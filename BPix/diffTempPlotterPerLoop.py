@@ -61,7 +61,8 @@ if(os.path.exists(inputFileName1) and os.path.exists(inputFileName2)):
 
             maxValue = max(data[k][1])
 
-            frameHist.GetYaxis().SetRangeUser(0,2)
+            frameHist.GetYaxis().SetRangeUser(0,3)
+            #frameHist.GetYaxis().SetRangeUser(0,2)
             frameHist.GetYaxis().SetTitle("Temperature (before - after) [degC]")
             frameHist.GetYaxis().SetTitleOffset(1.)
             frameHist.GetYaxis().SetTitleSize(0.06)

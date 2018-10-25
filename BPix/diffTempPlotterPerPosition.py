@@ -104,7 +104,8 @@ if(os.path.exists(inputFileName1) and os.path.exists(inputFileName2)):
         frameHist.GetXaxis().SetLabelSize(0.05)
 
         frameHist.GetZaxis().SetLabelSize(0.05)
-        frameHist.GetZaxis().SetRangeUser(0,1)
+        frameHist.GetZaxis().SetRangeUser(0,2)
+        #frameHist.GetZaxis().SetRangeUser(0,1)
         frameHist.SetMarkerSize(1.7)
         frameHist.Draw("colztext")
 
