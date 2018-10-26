@@ -36,10 +36,10 @@ if(os.path.exists(inputFileName1) and os.path.exists(inputFileName2)):
                     data[i][2].append(0)
 
                     if (ilayer == "L1" or ilayer == "L2"):
-                        data[i][3].append(45) # constant unc. for the phi
+                        data[i][3].append(15) # constant unc. for the phi
 
                     else:
-                        data[i][3].append(22.5) # constant unc. for the phi
+                        data[i][3].append(7.5) # constant unc. for the phi
 
                 else:
                     continue
@@ -76,7 +76,7 @@ if(os.path.exists(inputFileName1) and os.path.exists(inputFileName2)):
 
             gr_temp.SetLineColor(2)
             gr_temp.SetLineWidth(4)
-            gr_temp.SetMarkerSize(4)
+            gr_temp.SetMarkerSize(3)
             gr_temp.SetMarkerStyle(20)
             gr_temp.SetMarkerColor(2)
 

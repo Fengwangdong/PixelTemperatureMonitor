@@ -63,10 +63,10 @@ if(os.path.exists(leakInputFileName1) and os.path.exists(leakInputFileName2) and
                     tempData[i][1].append(0.5*(float(lineTemp1[2]) - float(lineTemp2[2])))
 
                     if (auxlayer[i] == "L1" or auxlayer[i] == "L2"):
-                        tempData[i][2].append(45) # constant unc. for the phi
+                        tempData[i][2].append(15) # constant unc. for the phi
 
                     else:
-                        tempData[i][2].append(22.5) # constant unc. for the phi
+                        tempData[i][2].append(7.5) # constant unc. for the phi
 
                     tempData[i][3].append(0)
 
@@ -113,8 +113,9 @@ if(os.path.exists(leakInputFileName1) and os.path.exists(leakInputFileName2) and
             canvas.Update()
 
             axis = TGaxis(ROOT.gPad.GetUxmax(), ROOT.gPad.GetUymin(), ROOT.gPad.GetUxmax(), ROOT.gPad.GetUymax(), 0, 4, 510, "+L")
-            axis.SetTitle("Temperature (before - after)[degC]")
+            axis.SetTitle("Temperature (before - after) [degC]")
             axis.SetTitleOffset(1.5)
+            axis.SetTitleFont(42)
             axis.SetLineColor(6)
             axis.SetTextColor(6)
             axis.SetLabelFont(42)

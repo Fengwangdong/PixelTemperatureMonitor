@@ -63,10 +63,10 @@ if(os.path.exists(leakInputFileName1) and os.path.exists(leakInputFileName2) and
                     tempData[i][1].append(250.0*(float(lineTemp1[2]) - float(lineTemp2[2])))
 
                     if (auxlayer[i] == "L1" or auxlayer[i] == "L2"):
-                        tempData[i][2].append(45) # constant unc. for the phi
+                        tempData[i][2].append(15) # constant unc. for the phi
 
                     else:
-                        tempData[i][2].append(22.5) # constant unc. for the phi
+                        tempData[i][2].append(7.5) # constant unc. for the phi
 
                     tempData[i][3].append(0)
 

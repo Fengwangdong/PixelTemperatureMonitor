@@ -30,10 +30,10 @@ if(os.path.exists(inputFileName)):
                 data[i][2].append(float(line[3]))
 
                 if (ilayer == "L1" or ilayer == "L2"):
-                    data[i][3].append(45) # constant unc. for the phi
+                    data[i][3].append(15) # constant unc. for the phi
 
                 else:
-                    data[i][3].append(22.5) # constant unc. for the phi
+                    data[i][3].append(7.5) # constant unc. for the phi
 
             else:
                 continue
@@ -55,7 +55,7 @@ if(os.path.exists(inputFileName)):
 
             maxValue = max(data[k][1])
 
-            frameHist.GetYaxis().SetRangeUser(-15,-4)
+            frameHist.GetYaxis().SetRangeUser(-16,-4)
             frameHist.GetYaxis().SetTitle("Temperature [degC]")
             frameHist.GetYaxis().SetTitleOffset(1.)
             frameHist.GetYaxis().SetTitleSize(0.06)
@@ -69,7 +69,7 @@ if(os.path.exists(inputFileName)):
 
             gr_temp.SetLineColor(2)
             gr_temp.SetLineWidth(4)
-            gr_temp.SetMarkerSize(4)
+            gr_temp.SetMarkerSize(3)
             gr_temp.SetMarkerStyle(20)
             gr_temp.SetMarkerColor(2)
 
