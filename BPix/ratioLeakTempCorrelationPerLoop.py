@@ -60,7 +60,7 @@ if(os.path.exists(leakInputFileName1) and os.path.exists(leakInputFileName2) and
 
                 if (auxlayer[i] in lineTemp1[0]) and (lineTemp1[2]!="null") and (lineTemp1[0] == lineTemp2[0]) and (lineTemp2[2]!="null") and (lineTemp2[3]!="null"):
                     tempData[i][0].append(float(lineTemp1[1]))
-                    tempData[i][1].append(0.5*(float(lineTemp1[2]) - float(lineTemp2[2])))
+                    tempData[i][1].append(0.8+0.2*(float(lineTemp1[2]) - float(lineTemp2[2])))
 
                     if (auxlayer[i] == "L1" or auxlayer[i] == "L2"):
                         tempData[i][2].append(15) # constant unc. for the phi
@@ -86,7 +86,8 @@ if(os.path.exists(leakInputFileName1) and os.path.exists(leakInputFileName2) and
 
             frameHist = ROOT.TH1F("","", 16, 0, 360)
             frameHist.SetStats(0)
-            frameHist.GetYaxis().SetRangeUser(0,2)
+            frameHist.GetYaxis().SetRangeUser(0.8,1.2)
+            #frameHist.GetYaxis().SetRangeUser(0,2)
             frameHist.GetYaxis().SetTitle("I_{leak}(after) / I_{leak}(before)")
             frameHist.GetYaxis().SetTitleOffset(1.6)
             frameHist.GetYaxis().SetTitleSize(0.05)
@@ -112,7 +113,7 @@ if(os.path.exists(leakInputFileName1) and os.path.exists(leakInputFileName2) and
             gr_minus.Draw("ep same")
             canvas.Update()
 
-            axis = TGaxis(ROOT.gPad.GetUxmax(), ROOT.gPad.GetUymin(), ROOT.gPad.GetUxmax(), ROOT.gPad.GetUymax(), 0, 4, 510, "+L")
+            axis = TGaxis(ROOT.gPad.GetUxmax(), ROOT.gPad.GetUymin(), ROOT.gPad.GetUxmax(), ROOT.gPad.GetUymax(), 0, 2, 510, "+L")
             axis.SetTitle("Temperature (before - after) [degC]")
             axis.SetTitleOffset(1.5)
             axis.SetTitleFont(42)

@@ -1,4 +1,4 @@
-phimap = {
+pgphimap = {
     "PixelBarrel_BmI_S1_LAY1":80.0,
     "PixelBarrel_BmI_S2_LAY1":60.0,
     "PixelBarrel_BmI_S3_LAY1":40.0,
