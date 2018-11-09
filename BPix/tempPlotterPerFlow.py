@@ -9,7 +9,8 @@ tdrStyle.setTDRStyle()
 ROOT.gStyle.SetErrorX(0.5)
 
 inputFileName3 = "ChangeCoolingFlow1/TS2Local/BeforeChangeFlow/temperatures_perloop.txt"
-inputFileName2 = "ChangeCoolingFlow1/TS2Local/AfterChangeFlow/temperatures_perloop.txt"
+#inputFileName2 = "ChangeCoolingFlow1/TS2Local/AfterChangeFlow/temperatures_perloop.txt"
+inputFileName2 = "ChangeCoolingFlow2/CosmicRun/BeforeChangeFlow/temperatures_perloop.txt"
 inputFileName1 = "ChangeCoolingFlow2/CosmicRun/AfterChangeFlow/temperatures_perloop.txt"
 fileList = [inputFileName1, inputFileName2, inputFileName3]
 layer = ["LAY1","LAY2","LAY3","LAY4"]
@@ -91,7 +92,7 @@ if len(inletTempVSFlow) > 0 and len(outletTempVSFlow) > 0:
         label = ROOT.TLatex(0.6,0.87, plotName[i])
         label.SetNDC()
 
-        label2 = ROOT.TLatex(0.18,0.96, "CMS")
+        label2 = ROOT.TLatex(0.18,0.96, "CMS  2018")
         label2.SetNDC()
 
         label3 = ROOT.TLatex(0.21,0.89, "Preliminary")
@@ -150,7 +151,7 @@ if len(inletTempVSFlow) > 0 and len(outletTempVSFlow) > 0:
     label = ROOT.TLatex(0.6,0.87, "BPix")
     label.SetNDC()
 
-    label2 = ROOT.TLatex(0.18,0.96, "CMS")
+    label2 = ROOT.TLatex(0.18,0.96, "CMS  2018")
     label2.SetNDC()
 
     label3 = ROOT.TLatex(0.21,0.89, "Preliminary")
