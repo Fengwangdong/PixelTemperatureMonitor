@@ -7,10 +7,10 @@ from array import array
 tdrStyle.setTDRStyle()
 ROOT.gStyle.SetErrorX(0.5)
 
-inputFileName3 = "ChangeCoolingFlow1/TS2Local/BeforeChangeFlow/temperatures_perloop.txt"
+inputFileName3 = "ChangeCoolingFlow1/StableBeamRun/BeforeChangeFlow/temperatures_perloop.txt"
 #inputFileName2 = "ChangeCoolingFlow1/TS2Local/AfterChangeFlow/temperatures_perloop.txt"
-inputFileName2 = "ChangeCoolingFlow2/CosmicRun/BeforeChangeFlow/temperatures_perloop.txt"
-inputFileName1 = "ChangeCoolingFlow2/CosmicRun/AfterChangeFlow/temperatures_perloop.txt"
+inputFileName2 = "ChangeCoolingFlow2/StableBeamRun/BeforeChangeFlow/temperatures_perloop.txt"
+inputFileName1 = "ChangeCoolingFlow2/StableBeamRun/AfterChangeFlow/temperatures_perloop.txt"
 fileList = [inputFileName1, inputFileName2, inputFileName3]
 layer = ["LAY1","LAY2","LAY3","LAY4"]
 auxlayer = ["L1","L2","L3","L4"]

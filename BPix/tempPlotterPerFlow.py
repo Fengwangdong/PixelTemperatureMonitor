@@ -8,8 +8,10 @@ import math
 tdrStyle.setTDRStyle()
 ROOT.gStyle.SetErrorX(0.5)
 
+#inputFileName3 = "ChangeCoolingFlow1/StableBeamRun/BeforeChangeFlow/temperatures_perloop.txt"
+#inputFileName2 = "ChangeCoolingFlow2/StableBeamRun/BeforeChangeFlow/temperatures_perloop.txt"
+#inputFileName1 = "ChangeCoolingFlow2/StableBeamRun/AfterChangeFlow/temperatures_perloop.txt"
 inputFileName3 = "ChangeCoolingFlow1/TS2Local/BeforeChangeFlow/temperatures_perloop.txt"
-#inputFileName2 = "ChangeCoolingFlow1/TS2Local/AfterChangeFlow/temperatures_perloop.txt"
 inputFileName2 = "ChangeCoolingFlow2/CosmicRun/BeforeChangeFlow/temperatures_perloop.txt"
 inputFileName1 = "ChangeCoolingFlow2/CosmicRun/AfterChangeFlow/temperatures_perloop.txt"
 fileList = [inputFileName1, inputFileName2, inputFileName3]
@@ -28,7 +30,7 @@ for j,index in enumerate(layer):
     diffTempVSFlow[j] = [array('d'), array('d'), array('d'), array('d')]
 
 plots = [inletTempVSFlow, outletTempVSFlow]
-plotName = ["BPix inlet", "BPix outlet"]
+plotName = ["Pixel Barrel Inlet", "Pixel Barrel Outlet"]
 
 for i,ilayer in enumerate(layer):
 
@@ -89,13 +91,15 @@ if len(inletTempVSFlow) > 0 and len(outletTempVSFlow) > 0:
         canvas.cd()
         frameHist.Draw()
 
-        label = ROOT.TLatex(0.6,0.87, plotName[i])
+        label = ROOT.TLatex(0.5,0.96, plotName[i])
         label.SetNDC()
+        label.SetTextFont(42)
+        label.SetTextSize(0.04)
 
         label2 = ROOT.TLatex(0.18,0.96, "CMS  2018")
         label2.SetNDC()
 
-        label3 = ROOT.TLatex(0.21,0.89, "Preliminary")
+        label3 = ROOT.TLatex(0.21,0.9, "Preliminary")
         label3.SetNDC()
         label3.SetTextFont(52)
         label3.SetTextSize(0.04)
@@ -148,13 +152,14 @@ if len(inletTempVSFlow) > 0 and len(outletTempVSFlow) > 0:
     canvas.cd()
     frameHist.Draw()
 
-    label = ROOT.TLatex(0.6,0.87, "BPix")
+    label = ROOT.TLatex(0.6,0.96, "Pixel Barrel")
     label.SetNDC()
+    label.SetTextSize(0.04)
 
     label2 = ROOT.TLatex(0.18,0.96, "CMS  2018")
     label2.SetNDC()
 
-    label3 = ROOT.TLatex(0.21,0.89, "Preliminary")
+    label3 = ROOT.TLatex(0.21,0.9, "Preliminary")
     label3.SetNDC()
     label3.SetTextFont(52)
     label3.SetTextSize(0.04)

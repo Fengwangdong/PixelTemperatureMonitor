@@ -80,15 +80,15 @@ if(os.path.exists(inputFileName)):
                     continue
 
 
-        canvas = ROOT.TCanvas("temperatures","temperatures",900,900)
+        canvas = ROOT.TCanvas("temperatures","temperatures",1200,900)
         canvas.SetTopMargin(0.08)
-        canvas.SetLeftMargin(0.19)
-        canvas.SetRightMargin(0.2)
+        canvas.SetLeftMargin(0.16)
+        canvas.SetRightMargin(0.18)
         canvas.SetBottomMargin(0.14)
         canvas.cd()
 
         frameHist.GetYaxis().SetTitle("temperature probe position")
-        frameHist.GetYaxis().SetTitleOffset(1.6)
+        frameHist.GetYaxis().SetTitleOffset(1.3)
         frameHist.GetYaxis().SetTitleSize(0.06)
         frameHist.GetYaxis().SetLabelSize(0.06)
 
@@ -99,7 +99,7 @@ if(os.path.exists(inputFileName)):
 
         frameHist.GetZaxis().SetLabelSize(0.05)
         frameHist.GetZaxis().SetTitle(ilayer.replace("L","Layer") + "  temperature [degC]")
-        frameHist.GetZaxis().SetTitleOffset(1.4)
+        frameHist.GetZaxis().SetTitleOffset(1.2)
         frameHist.GetZaxis().SetRangeUser(-16,-8)
         frameHist.SetMarkerSize(1.7)
         frameHist.Draw("colztext")
