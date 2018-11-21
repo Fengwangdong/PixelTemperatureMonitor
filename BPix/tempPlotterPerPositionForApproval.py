@@ -98,20 +98,27 @@ if(os.path.exists(inputFileName)):
         frameHist.GetXaxis().SetLabelSize(0.06)
 
         frameHist.GetZaxis().SetLabelSize(0.05)
-        frameHist.GetZaxis().SetTitle(ilayer.replace("L","Layer") + "  temperature [degC]")
+        frameHist.GetZaxis().SetTitle(ilayer.replace("L","Layer ") + "  temperature [#circC]")
         frameHist.GetZaxis().SetTitleOffset(1.2)
         frameHist.GetZaxis().SetRangeUser(-16,-8)
         frameHist.SetMarkerSize(1.7)
         frameHist.Draw("colztext")
 
-        label2 = ROOT.TLatex(0.19,0.94, "CMS  2018")
-        label2.SetNDC()
+        label = ROOT.TLatex(0.19,0.94, "CMS")
+        label.SetNDC()
+        label.SetTextSize(0.04)
 
-        label3 = ROOT.TLatex(0.46,0.94, "Preliminary")
+        label2 = ROOT.TLatex(0.29,0.94, "2018")
+        label2.SetNDC()
+        label2.SetTextFont(42)
+        label2.SetTextSize(0.04)
+
+        label3 = ROOT.TLatex(0.4,0.94, "Preliminary")
         label3.SetNDC()
         label3.SetTextFont(52)
         label3.SetTextSize(0.04)
 
+        label.Draw("same")
         label2.Draw("same")
         label3.Draw("same")
         canvas.SaveAs("BPix_" + ilayer + "_temperature_2D.pdf")

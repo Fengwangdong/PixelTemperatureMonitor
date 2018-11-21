@@ -7,10 +7,13 @@ from array import array
 tdrStyle.setTDRStyle()
 ROOT.gStyle.SetErrorX(0.5)
 
-inputFileName3 = "ChangeCoolingFlow1/StableBeamRun/BeforeChangeFlow/temperatures_perloop.txt"
-#inputFileName2 = "ChangeCoolingFlow1/TS2Local/AfterChangeFlow/temperatures_perloop.txt"
-inputFileName2 = "ChangeCoolingFlow2/StableBeamRun/BeforeChangeFlow/temperatures_perloop.txt"
-inputFileName1 = "ChangeCoolingFlow2/StableBeamRun/AfterChangeFlow/temperatures_perloop.txt"
+#inputFileName3 = "ChangeCoolingFlow1/StableBeamRun/BeforeChangeFlow/temperatures_perloop.txt"
+#inputFileName2 = "ChangeCoolingFlow2/StableBeamRun/BeforeChangeFlow/temperatures_perloop.txt"
+#inputFileName1 = "ChangeCoolingFlow2/StableBeamRun/AfterChangeFlow/temperatures_perloop.txt"
+inputFileName3 = "ChangeCoolingFlow1/TS2Local/BeforeChangeFlow/temperatures_perloop.txt"
+inputFileName2 = "ChangeCoolingFlow2/CosmicRun/BeforeChangeFlow/temperatures_perloop.txt"
+inputFileName1 = "ChangeCoolingFlow2/CosmicRun/AfterChangeFlow/temperatures_perloop.txt"
+
 fileList = [inputFileName1, inputFileName2, inputFileName3]
 layer = ["LAY1","LAY2","LAY3","LAY4"]
 auxlayer = ["L1","L2","L3","L4"]
@@ -51,11 +54,11 @@ if len(tempVSFlow) > 0:
         frameHist = ROOT.TH1D("temperatures","temperatures", 20, 0, 360)
         frameHist.SetStats(0)
         frameHist.GetYaxis().SetRangeUser(-16,-4)
-        frameHist.GetYaxis().SetTitle("Temperature [degC]")
+        frameHist.GetYaxis().SetTitle("Temperature [#circC]")
         frameHist.GetYaxis().SetTitleOffset(1.3)
         frameHist.GetYaxis().SetTitleSize(0.05)
         frameHist.GetYaxis().SetLabelSize(0.04)
-        frameHist.GetXaxis().SetTitle("#phi[*#pi/180 rad]")
+        frameHist.GetXaxis().SetTitle("#phi[#circ]")
         frameHist.GetXaxis().SetTitleOffset(1.)
         frameHist.GetXaxis().SetTitleSize(0.05)
         frameHist.GetXaxis().SetLabelSize(0.04)
@@ -67,16 +70,21 @@ if len(tempVSFlow) > 0:
         canvas.cd()
         frameHist.Draw()
 
-        label = ROOT.TLatex(0.48,0.87, ilayer)
+        label = ROOT.TLatex(0.48,0.87, ilayer.replace("LAY","layer "))
+        label.SetTextFont(42)
         label.SetNDC()
 
-        label2 = ROOT.TLatex(0.18,0.96, "CMS  2018")
+        label2 = ROOT.TLatex(0.18,0.96, "CMS")
         label2.SetNDC()
 
         label3 = ROOT.TLatex(0.21,0.89, "Preliminary")
         label3.SetNDC()
         label3.SetTextFont(52)
         label3.SetTextSize(0.04)
+
+        label4 = ROOT.TLatex(0.31,0.96, "2018")
+        label4.SetNDC()
+        label4.SetTextFont(42)
 
         legend = ROOT.TLegend(0.62,0.8,0.99,0.99)
         legend.SetFillColor(0)
@@ -103,4 +111,5 @@ if len(tempVSFlow) > 0:
         label.Draw("same")
         label2.Draw("same")
         label3.Draw("same")
+        label4.Draw("same")
         canvas.SaveAs("BPix_" + ilayer + "_temperatureVSflow2D.pdf")

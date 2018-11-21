@@ -66,7 +66,7 @@ for i,ilayer in enumerate(layer):
         diffTempVSFlow[i][0].append(flowList[ifile])
         diffTempVSFlow[i][1].append(inletTemp.GetMean()-outletTemp.GetMean())
         diffTempVSFlow[i][2].append(0)
-        diffTempVSFlow[i][3].append(0)
+        diffTempVSFlow[i][3].append(math.sqrt((inletTemp.GetStdDev()/inletTemp.GetMean())**2 + (outletTemp.GetStdDev()/outletTemp.GetMean())**2)*(inletTemp.GetMean()-outletTemp.GetMean()))
 
 if len(inletTempVSFlow) > 0 and len(outletTempVSFlow) > 0:
 
@@ -75,7 +75,7 @@ if len(inletTempVSFlow) > 0 and len(outletTempVSFlow) > 0:
         frameHist = ROOT.TH1D("temperatures","temperatures", 10, 1.5, 3)
         frameHist.SetStats(0)
         frameHist.GetYaxis().SetRangeUser(-16,-6)
-        frameHist.GetYaxis().SetTitle("Temperature [degC]")
+        frameHist.GetYaxis().SetTitle("Temperature [#circC]")
         frameHist.GetYaxis().SetTitleOffset(1.3)
         frameHist.GetYaxis().SetTitleSize(0.05)
         frameHist.GetYaxis().SetLabelSize(0.04)
@@ -96,7 +96,7 @@ if len(inletTempVSFlow) > 0 and len(outletTempVSFlow) > 0:
         label.SetTextFont(42)
         label.SetTextSize(0.04)
 
-        label2 = ROOT.TLatex(0.18,0.96, "CMS  2018")
+        label2 = ROOT.TLatex(0.18,0.96, "CMS")
         label2.SetNDC()
 
         label3 = ROOT.TLatex(0.21,0.9, "Preliminary")
@@ -104,7 +104,11 @@ if len(inletTempVSFlow) > 0 and len(outletTempVSFlow) > 0:
         label3.SetTextFont(52)
         label3.SetTextSize(0.04)
 
-        legend = ROOT.TLegend(0.85,0.81,0.99,0.99)
+        label4 = ROOT.TLatex(0.31,0.96, "2018")
+        label4.SetNDC()
+        label4.SetTextFont(42)
+
+        legend = ROOT.TLegend(0.82,0.81,0.99,0.99)
         legend.SetFillColor(0)
         legend.SetTextSize(0.04)
 
@@ -118,7 +122,7 @@ if len(inletTempVSFlow) > 0 and len(outletTempVSFlow) > 0:
             gr_temp[k].SetMarkerStyle(20)
             gr_temp[k].SetMarkerColor(colors[k])
 
-            legend.AddEntry(gr_temp[k],klayer,"lpe")
+            legend.AddEntry(gr_temp[k],klayer.replace("LAY","layer "),"lpe")
 
             if k == 0:
                 gr_temp[k].Draw("ep")
@@ -129,6 +133,7 @@ if len(inletTempVSFlow) > 0 and len(outletTempVSFlow) > 0:
         label.Draw("same")
         label2.Draw("same")
         label3.Draw("same")
+        label4.Draw("same")
         canvas.SaveAs(plotName[i].replace(" ","_") + "_temperatureVSflow.pdf")
 
 #================= temperature difference between inlet and outlet ==================
@@ -136,7 +141,7 @@ if len(inletTempVSFlow) > 0 and len(outletTempVSFlow) > 0:
     frameHist = ROOT.TH1D("temperatures","temperatures", 10, 1.5, 3)
     frameHist.SetStats(0)
     frameHist.GetYaxis().SetRangeUser(0,6)
-    frameHist.GetYaxis().SetTitle("#Delta T (inlet - outlet) [degC]")
+    frameHist.GetYaxis().SetTitle("#Delta T (inlet - outlet) [#circC]")
     frameHist.GetYaxis().SetTitleOffset(1.3)
     frameHist.GetYaxis().SetTitleSize(0.05)
     frameHist.GetYaxis().SetLabelSize(0.04)
@@ -156,7 +161,7 @@ if len(inletTempVSFlow) > 0 and len(outletTempVSFlow) > 0:
     label.SetNDC()
     label.SetTextSize(0.04)
 
-    label2 = ROOT.TLatex(0.18,0.96, "CMS  2018")
+    label2 = ROOT.TLatex(0.18,0.96, "CMS")
     label2.SetNDC()
 
     label3 = ROOT.TLatex(0.21,0.9, "Preliminary")
@@ -164,7 +169,11 @@ if len(inletTempVSFlow) > 0 and len(outletTempVSFlow) > 0:
     label3.SetTextFont(52)
     label3.SetTextSize(0.04)
 
-    legend = ROOT.TLegend(0.85,0.81,0.99,0.99)
+    label4 = ROOT.TLatex(0.31,0.96, "2018")
+    label4.SetNDC()
+    label4.SetTextFont(42)
+
+    legend = ROOT.TLegend(0.82,0.81,0.99,0.99)
     legend.SetFillColor(0)
     legend.SetTextSize(0.04)
 
@@ -180,7 +189,7 @@ if len(inletTempVSFlow) > 0 and len(outletTempVSFlow) > 0:
 
         print diffTempVSFlow[k][1]
 
-        legend.AddEntry(gr_temp_diff[k],klayer,"lpe")
+        legend.AddEntry(gr_temp_diff[k],klayer.replace("LAY","layer "),"lpe")
 
         if k == 0:
             gr_temp_diff[k].Draw("ep")
@@ -191,4 +200,5 @@ if len(inletTempVSFlow) > 0 and len(outletTempVSFlow) > 0:
     label.Draw("same")
     label2.Draw("same")
     label3.Draw("same")
+    label4.Draw("same")
     canvas.SaveAs("BPix_diffinletoutlet_temperatureVSflow.pdf")
