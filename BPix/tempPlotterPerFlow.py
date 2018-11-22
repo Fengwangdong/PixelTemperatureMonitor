@@ -140,7 +140,7 @@ if len(inletTempVSFlow) > 0 and len(outletTempVSFlow) > 0:
 
     frameHist = ROOT.TH1D("temperatures","temperatures", 10, 1.5, 3)
     frameHist.SetStats(0)
-    frameHist.GetYaxis().SetRangeUser(0,6)
+    frameHist.GetYaxis().SetRangeUser(0,7)
     frameHist.GetYaxis().SetTitle("#Delta T (inlet - outlet) [#circC]")
     frameHist.GetYaxis().SetTitleOffset(1.3)
     frameHist.GetYaxis().SetTitleSize(0.05)
